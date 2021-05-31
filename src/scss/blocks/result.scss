@@ -1,0 +1,22 @@
+.result {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 5px;
+  border: 2px solid $green;
+  min-height: 80vh;
+  padding: 20px;
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: center;
+
+  &__title {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  &__desc {
+    font-size: 2rem;
+    text-align: center;
+  }
+}

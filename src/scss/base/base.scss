@@ -1,0 +1,40 @@
+html {
+  font-size: 10px;
+}
+
+body {
+  @extend %font-prim;
+  @include font($size: 1.6rem, $height: 2.6rem, $weight: bold);
+}
+
+img {
+  width: 100%;
+  max-height: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1920px;
+  height: 100vh;
+  margin: 0 auto;
+
+  @media screen and (max-width: 1200px) {
+    padding-bottom: 20px;
+  }
+}
+
+.main-container.wrapper {
+  padding-bottom: 20px;
+}
+
+.wrapper {
+  padding: 0 2%;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
+}

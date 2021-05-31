@@ -1,0 +1,136 @@
+.play-cards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-top: 20px;
+  margin-bottom: 30px ;
+
+  &__item {
+    position: relative;
+    width: 24%;
+    margin-bottom: 15px;
+    transform-style: preserve-3d;
+    perspective: 600px;
+    transition: .5s;
+    cursor: pointer;
+
+    @media screen and (max-width: 1200px) {
+      width: 49%;     
+    }
+    
+    @media screen and (max-width: 768px) {
+      width: 100%;     
+    }
+  }
+
+  &__item-front {
+    width: 100%;
+    border: 1px solid $gray;
+    border-radius: 5px;
+    backface-visibility: hidden;
+    transform: rotateX(0deg);
+    transition: .5s;
+  }
+
+  &__item-img {
+    width: 100%;
+  }
+
+  &__item-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid $gray;
+    border-radius: 5px;
+    backface-visibility: hidden;
+    transform: rotateX(180deg);
+    transition: .5s;
+  }
+
+  &__item-desc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include font($size: 2.6rem, $height: 4.6rem, $weight: bold);
+  }
+
+  &__item-flip {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    background-image: url(../static/img/reload.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+
+    &:hover {
+      background-image: url(../static/img/refresh.png);
+
+    }
+  }
+
+  &__train {
+    display: block;
+    width: 100%;
+  }
+
+  &__game {
+    display: none;
+    pointer-events: none;
+  }
+
+  &--pointer {
+    .play-cards__game {
+      pointer-events: auto;
+    }
+  }
+}
+
+.play-cards--game {
+  transition: 1s ease;
+  .play-cards__train {
+    display: none;
+  }
+
+  .play-cards__game {
+    position: relative;
+    display: block;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $green-opacity;
+      transform: translateY(-100%);
+      transition: transform 1s ease;
+    }
+
+    &--true::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: translateY(0);
+      background-color: $green-opacity;
+      transition: transform 1s ease;
+    }
+
+    &--true {
+      pointer-events: none;
+    }
+  }
+}
